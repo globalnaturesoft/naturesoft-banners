@@ -1,0 +1,38 @@
+<% if @banner_type.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@banner_type.errors.count, "error") %> prohibited this banner type from being saved:</h2>
+
+    <ul>
+    <% @banner_type.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_for([naturesoft, :admin, @banner_type], html: {class: "form-horizontal", id: "validate_checking"}) do |f| %>
+    
+    <div class="form-group">
+        <label class="col-lg-2 control-label" ><%= t(:name) %> <span class='text-danger'>*</span></label>
+        <div class="col-lg-10">
+            <%= f.text_field :name, class: "form-control required" %>
+        </div>
+    </div>
+        
+    <div class="form-group">
+        <label class="col-lg-2 control-label" ><%= t(:width) %> <span class='text-danger'>*</span></label>
+        <div class="col-lg-4">
+            <%= f.text_field :width, class: "form-control required" %>
+        </div>
+        <label class="col-lg-2 control-label" ><%= t(:height) %> <span class='text-danger'>*</span></label>
+        <div class="col-lg-4">
+            <%= f.text_field :height, class: "form-control required" %>
+        </div>
+    </div>
+
+    <div class="text-right">
+        <%= button_tag "#{t(:save)} <i class=\"icon-plus22 position-right\"></i>".html_safe, class: "btn btn-primary"%>
+        <%= link_to "#{t(:cancel)} <i class=\"icon-cross3 position-right\"></i>".html_safe, naturesoft.admin_banner_types_path, class: "btn btn-danger"%>
+    </div>
+    
+<% end %>
