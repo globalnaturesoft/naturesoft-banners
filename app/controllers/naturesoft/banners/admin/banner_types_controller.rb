@@ -7,8 +7,8 @@ module Naturesoft
         
         # add top breadcrumb
         def default_breadcrumb
-          add_breadcrumb "Banners", naturesoft.admin_banner_types_path
-          add_breadcrumb "Banner Types", naturesoft.admin_banner_types_path
+          add_breadcrumb "Banners", naturesoft_banners.admin_banner_types_path
+          add_breadcrumb "Banner Types", naturesoft_banners.admin_banner_types_path
         end
     
         # GET /banner_types
@@ -39,7 +39,7 @@ module Naturesoft
           @banner_type.user = current_user
     
           if @banner_type.save
-            redirect_to naturesoft.edit_admin_banner_type_path(@banner_type.id), notice: 'Banner type was successfully created.'
+            redirect_to naturesoft_banners.edit_admin_banner_type_path(@banner_type.id), notice: 'Banner type was successfully created.'
           else
             render :new
           end
@@ -50,7 +50,7 @@ module Naturesoft
           add_breadcrumb "Edit Banner Type", nil,  class: "active"
           
           if @banner_type.update(banner_type_params)
-            redirect_to naturesoft.edit_admin_banner_type_path(@banner_type.id), notice: 'Banner type was successfully updated.'
+            redirect_to naturesoft_banners.edit_admin_banner_type_path(@banner_type.id), notice: 'Banner type was successfully updated.'
           else
             render :edit
           end
@@ -59,7 +59,7 @@ module Naturesoft
         # DELETE /banner_types/1
         def destroy
           @banner_type.destroy
-          redirect_to naturesoft.admin_banner_types_url, notice: 'Banner type was successfully destroyed.'
+          redirect_to naturesoft_banners.admin_banner_types_url, notice: 'Banner type was successfully destroyed.'
         end
     
         private
@@ -70,7 +70,7 @@ module Naturesoft
     
           # Only allow a trusted parameter "white list" through.
           def banner_type_params
-            params.require(:banner_type).permit(:name, :width, :height, :user_id)
+            params.fetch(:banner_type, {}).permit(:name, :width, :height, :user_id)
           end
       end
     end

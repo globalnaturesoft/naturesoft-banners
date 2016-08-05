@@ -1,7 +1,7 @@
 <% title t(:banners) %>
 
 <div class="text-right">
-    <%= link_to "#{t(:new_banner)} <i class=\"icon-plus22 position-right\"></i>".html_safe, naturesoft.new_admin_banner_path, class: 'btn btn-primary' %>
+    <%= link_to "#{t(:new_banner)} <i class=\"icon-plus22 position-right\"></i>".html_safe, naturesoft_banners.new_admin_banner_path, class: 'btn btn-primary' %>
 </div>
 <br />
 
@@ -36,10 +36,10 @@
         
                                         <ul class="dropdown-menu dropdown-menu-right">
                                             <li>
-                                                <%= link_to '<i class="glyphicon glyphicon-edit"></i> '.html_safe + t(:edit), naturesoft.edit_admin_banner_path(item) %>
+                                                <%= link_to '<i class="glyphicon glyphicon-edit"></i> '.html_safe + t(:edit), naturesoft_banners.edit_admin_banner_path(item) %>
                                             </li>
                                             <li>
-                                                <%= link_to '<i class="icon-cross2"></i> '.html_safe + t(:delete), naturesoft.admin_banner_path(item), method: :delete, data: {confirm: 'Are you sure?'} %>
+                                                <%= link_to '<i class="icon-cross2"></i> '.html_safe + t(:delete), naturesoft_banners.admin_banner_path(item), method: :delete, data: {confirm: 'Are you sure?'} %>
                                             </li>
                                         </ul>
                                     </li>

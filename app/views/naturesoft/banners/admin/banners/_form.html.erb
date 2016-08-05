@@ -1,26 +1,26 @@
-<% if @banner.errors.any? %>
+<% if banner.errors.any? %>
   <div id="error_explanation">
-    <h2><%= pluralize(@banner.errors.count, "error") %> prohibited this banner from being saved:</h2>
+    <h2><%= pluralize(banner.errors.count, "error") %> prohibited this banner from being saved:</h2>
 
     <ul>
-    <% @banner.errors.full_messages.each do |message| %>
+    <% banner.errors.full_messages.each do |message| %>
       <li><%= message %></li>
     <% end %>
     </ul>
   </div>
 <% end %>
 
-<%= form_for([naturesoft, :admin, @banner], html: {class: "form-horizontal", id: "validate_checking"}) do |f| %>
+<%= form_for([naturesoft_banners, :admin, banner], html: {class: "form-horizontal", id: "validate_checking"}) do |f| %>
     
     <div class="form-group">
       <label class="col-lg-2 control-label" ><%= t(:image) %> <span class='text-danger'>*</span></label>
       <div class="media no-margin-top col-lg-10">
         <div class="media-left">
-          <img src="<%= @banner.image_url %>" style="width: 60px; height: 60px; border-radius: 2px;" alt="">
+          <img src="<%= banner.image_url %>" style="width: 60px; height: 60px; border-radius: 2px;" alt="">
         </div>
   
         <div class="media-body">
-          <input type="file" name="slide[image_ur;]" class="file-styled">
+          <input type="file" name="banner[image_url]" class="file-styled">
           <span class="help-block">Accepted formats: gif, png, jpg.</span>
         </div>
       </div>
@@ -50,13 +50,13 @@
     <div class="form-group">
       <label class="col-lg-2 control-label" ><%= t(:banner_type) %> <span class='text-danger'>*</span></label>
       <div class="col-lg-10">
-        <%= f.collection_select(:banner_type_id, Naturesoft::Banners::BannerType.all, :id, :name, {:prompt=> "Choose banner type..."}, {class: "select2"}) %>
+        <%= f.collection_select(:banner_type_id, Naturesoft::Banners::BannerType.all, :id, :name, {:prompt=> "#{t(:choose_banner_type)}"}, {class: "select2"}) %>
       </div>
     </div>
 
     <div class="text-right">
         <%= button_tag "#{t(:save)} <i class=\"icon-plus22 position-right\"></i>".html_safe, class: "btn btn-primary"%>
-        <%= link_to "#{t(:cancel)} <i class=\"icon-cross3 position-right\"></i>".html_safe, naturesoft.admin_banners_path, class: "btn btn-danger"%>
+        <%= link_to "#{t(:cancel)} <i class=\"icon-cross3 position-right\"></i>".html_safe, naturesoft_banners.admin_banners_path, class: "btn btn-danger"%>
     </div>
     
 <% end %>

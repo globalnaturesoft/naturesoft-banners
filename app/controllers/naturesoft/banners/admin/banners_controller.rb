@@ -7,8 +7,8 @@ module Naturesoft
         
         # add top breadcrumb
         def default_breadcrumb
-          add_breadcrumb "Banners", naturesoft.admin_banners_path
-          add_breadcrumb "Banners", naturesoft.admin_banners_path
+          add_breadcrumb "Banners", naturesoft_banners.admin_banners_path
+          add_breadcrumb "Banners", naturesoft_banners.admin_banners_path
         end
     
         # GET /banners
@@ -39,7 +39,7 @@ module Naturesoft
           @banner.user = current_user
     
           if @banner.save
-            redirect_to naturesoft.edit_admin_banner_path(@banner.id), notice: 'Banner was successfully created.'
+            redirect_to naturesoft_banners.edit_admin_banner_path(@banner.id), notice: 'Banner was successfully created.'
           else
             render :new
           end
@@ -49,7 +49,7 @@ module Naturesoft
         def update
           dd_breadcrumb "Edit Banner", nil,  class: "active"
           if @banner.update(banner_params)
-            redirect_to naturesoft.edit_admin_banner_path(@banner.id), notice: 'Banner was successfully updated.'
+            redirect_to naturesoft_banners.edit_admin_banner_path(@banner.id), notice: 'Banner was successfully updated.'
           else
             render :edit
           end
@@ -58,7 +58,7 @@ module Naturesoft
         # DELETE /banners/1
         def destroy
           @banner.destroy
-          redirect_to naturesoft.admin_banners_url, notice: 'Banner was successfully destroyed.'
+          redirect_to naturesoft_banners.admin_banners_url, notice: 'Banner was successfully destroyed.'
         end
     
         private
@@ -69,7 +69,7 @@ module Naturesoft
     
           # Only allow a trusted parameter "white list" through.
           def banner_params
-            params.require(:banner).permit(:image_url, :name, :link_url, :description, :banner_type_id, :user_id)
+            params.fetch(:banner, {}).permit(:image_url, :name, :link_url, :description, :banner_type_id, :user_id)
           end
       end
     end

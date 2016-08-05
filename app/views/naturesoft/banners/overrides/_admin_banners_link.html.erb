@@ -2,10 +2,10 @@
     <a href="#"><i class="icon-file-picture"></i> <span><%= t(:banner) %></span></a>
     <ul>
         <li<% if["naturesoft/banners/admin/banners"].include?(params[:controller]) %>class="active"<% end %>>
-            <%= link_to t(:banners), naturesoft.admin_banners_path %>
+            <%= link_to t(:banners), naturesoft_banners.admin_banners_path %>
         </li>
         <li<% if["naturesoft/banners/admin/banner_types"].include?(params[:controller]) %>class="active"<% end %>>
-            <%= link_to t(:banner_types), naturesoft.admin_banner_types_path %>
+            <%= link_to t(:banner_types), naturesoft_banners.admin_banner_types_path %>
         </li>
     </ul>
 </li>

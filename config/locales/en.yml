@@ -1,0 +1,17 @@
+en:
+  # Modular Articles -------------------------------------
+  banner: "Banner"
+  banner_type: "Banner Type"
+  banners: "Banners"
+  banner_types: "Banner Types"
+  
+  new_banner: "New Banner"
+  new_banner_type: "New Banner Type"
+  edit_banner: "Edit Banner"
+  edit_banner_type: "Edit Banner Type"
+  
+  link_url: "Link Url"
+  choose_banner_type: "Choose Banner Type"
+  width: "Width"
+  height: "Height"
+  # Modular Articles-------------------------------------

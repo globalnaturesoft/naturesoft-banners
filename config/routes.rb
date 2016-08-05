@@ -1,8 +1,6 @@
-Naturesoft::Core::Engine.routes.draw do
-  scope module: 'banners' do
-    namespace :admin do
-      resources :banners
-      resources :banner_types
-    end
+Naturesoft::Banners::Engine.routes.draw do
+  namespace :admin, module: 'admin' do
+    resources :banners
+    resources :banner_types
   end
 end
