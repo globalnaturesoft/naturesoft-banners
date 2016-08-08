@@ -2,7 +2,7 @@ module Naturesoft
   module Banners
     module Admin
       class BannersController < Naturesoft::Admin::AdminController
-        before_action :set_banner, only: [:show, :edit, :update, :destroy]
+        before_action :set_banner, only: [:show, :edit, :update, :enable, :disable, :destroy]
         before_action :default_breadcrumb
         
         # add top breadcrumb
@@ -13,7 +13,7 @@ module Naturesoft
     
         # GET /banners
         def index
-          @banners = Banner.all.paginate(:page => params[:page], :per_page => 10)
+          @banners = Banner.search(params).paginate(:page => params[:page], :per_page => 10)
         end
     
         # GET /banners/1
@@ -47,7 +47,7 @@ module Naturesoft
     
         # PATCH/PUT /banners/1
         def update
-          dd_breadcrumb "Edit Banner", nil,  class: "active"
+          add_breadcrumb "Edit Banner", nil,  class: "active"
           if @banner.update(banner_params)
             redirect_to naturesoft_banners.edit_admin_banner_path(@banner.id), notice: 'Banner was successfully updated.'
           else
@@ -58,7 +58,21 @@ module Naturesoft
         # DELETE /banners/1
         def destroy
           @banner.destroy
-          redirect_to naturesoft_banners.admin_banners_url, notice: 'Banner was successfully destroyed.'
+          render text: 'Banner was successfully destroyed.'
+        end
+        
+        # enable banner status
+        def enable
+          @banner.status = "active"
+          @banner.save
+          render text: 'Banner was successfully active.'
+        end
+        
+        # disable banner status
+        def disable
+          @banner.status = "inactive"
+          @banner.save
+          render text: 'Banner was successfully inactive.'
         end
     
         private
@@ -69,7 +83,7 @@ module Naturesoft
     
           # Only allow a trusted parameter "white list" through.
           def banner_params
-            params.fetch(:banner, {}).permit(:image_url, :name, :link_url, :description, :banner_type_id, :user_id)
+            params.fetch(:banner, {}).permit(:image_url, :name, :link_url, :description, :banner_type_id, :user_id, :status)
           end
       end
     end

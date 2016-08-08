@@ -2,7 +2,7 @@ module Naturesoft
   module Banners
     module Admin
       class BannerTypesController < Naturesoft::Admin::AdminController
-        before_action :set_banner_type, only: [:show, :edit, :update, :destroy]
+        before_action :set_banner_type, only: [:show, :edit, :update, :enable, :disable, :destroy]
         before_action :default_breadcrumb
         
         # add top breadcrumb
@@ -13,7 +13,7 @@ module Naturesoft
     
         # GET /banner_types
         def index
-          @banner_types = BannerType.all.paginate(:page => params[:page], :per_page => 10)
+          @banner_types = BannerType.search(params).paginate(:page => params[:page], :per_page => 10)
         end
     
         # GET /banner_types/1
@@ -59,7 +59,21 @@ module Naturesoft
         # DELETE /banner_types/1
         def destroy
           @banner_type.destroy
-          redirect_to naturesoft_banners.admin_banner_types_url, notice: 'Banner type was successfully destroyed.'
+          render text: 'Banner type was successfully destroyed.'
+        end
+        
+        # enable banner type status
+        def enable
+          @banner_type.status = "active"
+          @banner_type.save
+          render text: 'Banner Type was successfully active.'
+        end
+        
+        # disable banner type status
+        def disable
+          @banner_type.status = "inactive"
+          @banner_type.save
+          render text: 'Banner Type was successfully inactive.'
         end
     
         private
@@ -70,7 +84,7 @@ module Naturesoft
     
           # Only allow a trusted parameter "white list" through.
           def banner_type_params
-            params.fetch(:banner_type, {}).permit(:name, :width, :height, :user_id)
+            params.fetch(:banner_type, {}).permit(:name, :width, :height, :user_id, :status)
           end
       end
     end
