@@ -23,17 +23,17 @@ module Naturesoft
         # GET /banner_types/new
         def new
           @banner_type = BannerType.new
-          add_breadcrumb "New Banner Type", nil,  class: "active"
+          add_breadcrumb "New Banner Type", nil, class: "active"
         end
     
         # GET /banner_types/1/edit
         def edit
-          add_breadcrumb "Edit Banner Type", nil,  class: "active"
+          add_breadcrumb "Edit Banner Type", nil, class: "active"
         end
     
         # POST /banner_types
         def create
-          add_breadcrumb "New Banner Type", nil,  class: "active"
+          add_breadcrumb "New Banner Type", nil, class: "active"
           @banner_type = BannerType.new(banner_type_params)
           
           @banner_type.user = current_user
@@ -47,7 +47,7 @@ module Naturesoft
     
         # PATCH/PUT /banner_types/1
         def update
-          add_breadcrumb "Edit Banner Type", nil,  class: "active"
+          add_breadcrumb "Edit Banner Type", nil, class: "active"
           
           if @banner_type.update(banner_type_params)
             redirect_to naturesoft_banners.edit_admin_banner_type_path(@banner_type.id), notice: 'Banner type was successfully updated.'
@@ -81,7 +81,7 @@ module Naturesoft
     
           # Only allow a trusted parameter "white list" through.
           def banner_type_params
-            params.fetch(:banner_type, {}).permit(:name, :width, :height, :user_id, :status)
+            params.fetch(:banner_type, {}).permit(:name, :width, :height, :image_style, :user_id, :status)
           end
       end
     end

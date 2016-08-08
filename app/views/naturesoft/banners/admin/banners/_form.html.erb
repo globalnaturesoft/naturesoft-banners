@@ -13,7 +13,7 @@
   </div>
 <% end %>
 
-<%= form_for([naturesoft_banners, :admin, banner], html: {class: "form-horizontal", id: "validate_checking"}) do |f| %>
+<%= form_for([naturesoft_banners, :admin, banner], html: {class: "form-horizontal", id: "validate_checking", multipart: true}) do |f| %>
     
     <div class="form-group">
       <label class="col-lg-2 control-label" ><%= t(:image) %> <span class='text-danger'>*</span></label>

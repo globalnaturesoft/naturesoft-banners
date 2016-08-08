@@ -1,5 +1,7 @@
 module Naturesoft::Banners
   class Banner < ApplicationRecord
+		mount_uploader :image_url, Naturesoft::Banners::BannerUploader
+		
     belongs_to :user
     belongs_to :banner_type
     def self.sort_by
