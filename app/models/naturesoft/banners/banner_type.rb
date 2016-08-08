@@ -33,5 +33,14 @@ module Naturesoft::Banners
       
       return records
     end
+    
+    # change status
+    def enable
+			update_columns(status: "active")
+		end
+    
+    def disable
+			update_columns(status: "inactive")
+		end
   end
 end

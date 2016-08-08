@@ -61,17 +61,14 @@ module Naturesoft
           render text: 'Banner was successfully destroyed.'
         end
         
-        # enable banner status
+        #CHANGE STATUS /banners
         def enable
-          @banner.status = "active"
-          @banner.save
+          @banner.enable
           render text: 'Banner was successfully active.'
         end
         
-        # disable banner status
         def disable
-          @banner.status = "inactive"
-          @banner.save
+          @banner.disable
           render text: 'Banner was successfully inactive.'
         end
     

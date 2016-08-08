@@ -50,20 +50,24 @@
                 <tbody>
                     <% @banner_types.each do |item| %>
                         <tr<% if item.status == "active" %> class="success"<% else %> class="warning"<% end %>>
-                            <td class="kq_search"><%= item.name %></td>
+                            <td class="kq_search">
+                                <%= item.name %><br>
+                                <%= display_status(item.status) %>
+                            </td>
                             <td><%= item.width.to_s + " x " + item.height.to_s %></td>
                             <td><%= item.created_at.strftime("%d/%m/%Y") %></td>
                             <td class="text-right">    
                                 <div class="btn-group">
                                     <ul class="icons-list">
-                                        <%= link_to '<i class="icon-pencil"></i>'.html_safe, naturesoft_banners.edit_admin_banner_type_path(item), class: "btn bg-teal btn-icon btn-xs" %>
+                                        <%= link_to '<i class="icon-pencil"></i>'.html_safe, naturesoft_banners.edit_admin_banner_type_path(item), class: "btn bg-teal btn-icon btn-xs", title: item.name %>
                                         <button type="button" class="btn bg-teal dropdown-toggle btn-xs" data-toggle="dropdown"><span class="caret"></span></button>
                                         <ul class="dropdown-menu dropdown-menu-right">
                                             <% if item.status == "active" %>
                                             <li>
                                                 <%= link_to '<i class="icon-lock4"></i> '.html_safe + t(:inactive), naturesoft_banners.disable_admin_banner_types_path(id: item.id), method: :put %>
                                             </li>
-                                            <% else %>
+                                            <% end %>
+                                            <% if item.status == "inactive" %>
                                             <li>
                                                 <%= link_to '<i class="icon-unlocked"></i> '.html_safe + t(:active), naturesoft_banners.enable_admin_banner_types_path(id: item.id), method: :put %>
                                             </li>

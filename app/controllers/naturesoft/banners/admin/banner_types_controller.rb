@@ -62,18 +62,15 @@ module Naturesoft
           render text: 'Banner type was successfully destroyed.'
         end
         
-        # enable banner type status
+        #CHANGE STATUS /banner types
         def enable
-          @banner_type.status = "active"
-          @banner_type.save
-          render text: 'Banner Type was successfully active.'
+          @banner_type.enable
+          render text: 'Banner type was successfully active.'
         end
         
-        # disable banner type status
         def disable
-          @banner_type.status = "inactive"
-          @banner_type.save
-          render text: 'Banner Type was successfully inactive.'
+          @banner_type.disable
+          render text: 'Banner type was successfully inactive.'
         end
     
         private
