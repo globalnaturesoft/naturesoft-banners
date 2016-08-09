@@ -1,5 +1,5 @@
 Naturesoft::Banners::Engine.routes.draw do
-  namespace :admin, module: 'admin', path: "admin/content" do
+  namespace :admin, module: 'admin' do
     resources :banners do
       collection do
         put "enable"

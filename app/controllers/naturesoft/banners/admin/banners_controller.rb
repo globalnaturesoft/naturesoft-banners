@@ -47,7 +47,6 @@ module Naturesoft
     
         # PATCH/PUT /banners/1
         def update
-          da6sds6a
           add_breadcrumb "Edit Banner", nil,  class: "active"
           if @banner.update(banner_params)
             redirect_to naturesoft_banners.edit_admin_banner_path(@banner.id), notice: 'Banner was successfully updated.'
