@@ -16,8 +16,8 @@
 <%= form_for([naturesoft_banners, :admin, banner], html: {class: "form-horizontal", id: "validate_checking", multipart: true}) do |f| %>
     
     <div class="form-group">
-      <label class="col-lg-2 control-label" ><%= t(:image) %> <span class='text-danger'>*</span></label>
-      <div class="media no-margin-top col-lg-10">
+      <label class="col-md-2 control-label" ><%= t(:image) %> <span class='text-danger'>*</span></label>
+      <div class="media no-margin-top col-md-10">
         <div class="media-left">
           <img src="<%= banner.image_url %>" style="width: 60px; height: 60px; border-radius: 2px;" alt="">
         </div>
@@ -30,29 +30,29 @@
     </div>
     
     <div class="form-group">
-        <label class="col-lg-2 control-label" ><%= t(:name) %> <span class='text-danger'>*</span></label>
-        <div class="col-lg-10">
+        <label class="col-md-2 control-label" ><%= t(:name) %> <span class='text-danger'>*</span></label>
+        <div class="col-md-10">
             <%= f.text_field :name, class: "form-control required" %>
         </div>
     </div>
         
     <div class="form-group">
-        <label class="col-lg-2 control-label" ><%= t(:link_url) %> <span class='text-danger'>*</span></label>
-        <div class="col-lg-10">
+        <label class="col-md-2 control-label" ><%= t(:link_url) %> <span class='text-danger'>*</span></label>
+        <div class="col-md-10">
             <%= f.text_field :link_url, class: "form-control" %>
         </div>
     </div>
         
     <div class="form-group">
-        <label class="col-lg-2 control-label" ><%= t(:description) %> <!--<span class='text-danger'>*</span>--></label>
-        <div class="col-lg-10">
+        <label class="col-md-2 control-label" ><%= t(:description) %> <!--<span class='text-danger'>*</span>--></label>
+        <div class="col-md-10">
             <%= f.text_area :description, rows: "5", cols: "5", class: "form-control" %>
         </div>
     </div>
         
     <div class="form-group">
-      <label class="col-lg-2 control-label" ><%= t(:image_type) %> <span class='text-danger'>*</span></label>
-      <div class="col-lg-10">
+      <label class="col-md-2 control-label" ><%= t(:image_type) %> <span class='text-danger'>*</span></label>
+      <div class="col-md-10">
         <%= f.collection_select(:image_id, Naturesoft::Banners::Image.all, :id, :name, {:prompt=> "#{t(:choose_image_type)}"}, {class: "select2"}) %>
       </div>
     </div>
