@@ -51,9 +51,9 @@
     </div>
         
     <div class="form-group">
-      <label class="col-lg-2 control-label" ><%= t(:banner_type) %> <span class='text-danger'>*</span></label>
+      <label class="col-lg-2 control-label" ><%= t(:image_type) %> <span class='text-danger'>*</span></label>
       <div class="col-lg-10">
-        <%= f.collection_select(:banner_type_id, Naturesoft::Banners::BannerType.all, :id, :name, {:prompt=> "#{t(:choose_banner_type)}"}, {class: "select2"}) %>
+        <%= f.collection_select(:image_id, Naturesoft::Banners::Image.all, :id, :name, {:prompt=> "#{t(:choose_image_type)}"}, {class: "select2"}) %>
       </div>
     </div>
 

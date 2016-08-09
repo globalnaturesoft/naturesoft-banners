@@ -1,11 +1,11 @@
 <li>
-    <a href="#"><i class="icon-file-picture"></i> <span><%= t(:banner) %></span></a>
+    <a href="#"><i class="icon-image4"></i> <span><%= t(:banner) %></span></a>
     <ul>
         <li<% if["naturesoft/banners/admin/banners"].include?(params[:controller]) %>class="active"<% end %>>
             <%= link_to t(:banners), naturesoft_banners.admin_banners_path %>
         </li>
-        <li<% if["naturesoft/banners/admin/banner_types"].include?(params[:controller]) %>class="active"<% end %>>
-            <%= link_to t(:banner_types), naturesoft_banners.admin_banner_types_path %>
+        <li<% if["naturesoft/banners/admin/images"].include?(params[:controller]) %>class="active"<% end %>>
+            <%= link_to t(:images), naturesoft_banners.admin_images_path %>
         </li>
     </ul>
 </li>

@@ -6,7 +6,7 @@ Naturesoft::Banners::Engine.routes.draw do
         put "disable"
       end
     end
-    resources :banner_types do
+    resources :images do
       collection do
         put "enable"
         put "disable"

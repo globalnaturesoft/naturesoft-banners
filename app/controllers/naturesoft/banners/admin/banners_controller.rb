@@ -35,7 +35,6 @@ module Naturesoft
         def create
           add_breadcrumb "New Banner", nil,  class: "active"
           @banner = Banner.new(banner_params)
-          
           @banner.user = current_user
     
           if @banner.save
@@ -80,7 +79,7 @@ module Naturesoft
     
           # Only allow a trusted parameter "white list" through.
           def banner_params
-            params.fetch(:banner, {}).permit(:image_url, :name, :link_url, :description, :banner_type_id, :user_id, :status)
+            params.fetch(:banner, {}).permit(:image_url, :name, :link_url, :description, :image_id, :status)
           end
       end
     end
