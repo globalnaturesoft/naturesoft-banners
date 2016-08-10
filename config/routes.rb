@@ -6,11 +6,5 @@ Naturesoft::Banners::Engine.routes.draw do
         put "disable"
       end
     end
-    resources :images do
-      collection do
-        put "enable"
-        put "disable"
-      end
-    end
   end
 end

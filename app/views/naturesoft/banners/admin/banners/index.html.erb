@@ -52,7 +52,7 @@
                     <% @banners.each do |item| %>
                         <tr<% if item.status == "active" %> class="success"<% else %> class="warning"<% end %>>
                             <td>
-								<%= image_tag(item.image_url.system, size: "70x70", class: "img-rounded img-preview") %>
+								<%= image_tag(item.image_url.system, class: "img-rounded img-preview") %>
 							</td>
                             <td class="kq_search">
 								<%= item.name %><br>

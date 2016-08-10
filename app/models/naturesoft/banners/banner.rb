@@ -3,7 +3,6 @@ module Naturesoft::Banners
 		mount_uploader :image_url, Naturesoft::Banners::BannerUploader
 		
     belongs_to :user
-    belongs_to :image
     def self.sort_by
       [
         ["Name","naturesoft_banners_banners.name"],
