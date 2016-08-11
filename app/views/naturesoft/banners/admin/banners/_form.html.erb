@@ -19,7 +19,7 @@
       <label class="col-md-2 control-label" ><%= t(:image) %> <span class='text-danger'>*</span></label>
       <div class="media no-margin-top col-md-10">
         <div class="media-left">
-          <img src="<%= banner.image_url.system %>" style="border-radius: 2px;" alt="">
+          <img src="<%= image_src(banner.image_url) %>" style="width: 60px; height: 60px; border-radius: 2px;" alt="">
         </div>
   
         <div class="media-body">
