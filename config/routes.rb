@@ -4,6 +4,7 @@ Naturesoft::Banners::Engine.routes.draw do
       collection do
         put "enable"
         put "disable"
+        delete 'delete'
       end
     end
     

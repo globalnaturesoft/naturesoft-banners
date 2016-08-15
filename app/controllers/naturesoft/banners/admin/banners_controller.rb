@@ -70,6 +70,13 @@ module Naturesoft
           @banner.disable
           render text: 'Banner was successfully inactive.'
         end
+        
+        # DELETE /banners/delete?ids=1,2,3
+        def delete
+          @banners = Banner.where(id: params[:ids].split(","))
+          @banners.destroy_all
+          render text: 'Banner(s) was successfully destroyed.'
+        end
     
         private
           # Use callbacks to share common setup or constraints between actions.
