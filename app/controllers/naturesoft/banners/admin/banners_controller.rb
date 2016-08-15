@@ -13,7 +13,7 @@ module Naturesoft
     
         # GET /banners
         def index
-          @banners = Banner.search(params).paginate(:page => params[:page], :per_page => 10)
+          @banners = Banner.search(params).paginate(:page => params[:page], :per_page => Naturesoft::Option.get("banners", "items_per_page"))
         end
     
         # GET /banners/1
