@@ -7,7 +7,7 @@ module Naturesoft
         
         # add top breadcrumb
         def default_breadcrumb
-          add_breadcrumb "Banners", naturesoft_banners.admin_banners_path
+          add_breadcrumb "Banner", naturesoft_banners.admin_banners_path
           add_breadcrumb "Banners", naturesoft_banners.admin_banners_path
         end
     
@@ -33,7 +33,6 @@ module Naturesoft
     
         # POST /banners
         def create
-          add_breadcrumb "New Banner", nil,  class: "active"
           @banner = Banner.new(banner_params)
           @banner.user = current_user
     
@@ -46,7 +45,6 @@ module Naturesoft
     
         # PATCH/PUT /banners/1
         def update
-          add_breadcrumb "Edit Banner", nil,  class: "active"
           if @banner.update(banner_params)
             redirect_to naturesoft_banners.edit_admin_banner_path(@banner.id), notice: 'Banner was successfully updated.'
           else

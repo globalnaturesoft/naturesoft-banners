@@ -1,5 +1,5 @@
 Naturesoft::Option.class_eval do
-  @partners = {
+  @banners = {
     "items_per_page" => 10,
     "thumbnails" => {
       "0" => {
