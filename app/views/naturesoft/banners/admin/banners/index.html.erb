@@ -5,7 +5,7 @@
 </div>
 <br />
 
-<form class="listing-form">
+<form class="listing-form sortable" sort-url="<%= naturesoft.admin_custom_sort_path(class: "Naturesoft::Banners::Banner") %>">
     
     <div class="panel panel-flat">
         <div class="panel-body filter-box">
@@ -13,13 +13,13 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label><%= t(:sort_by) %></label>
-                        <%= select_tag(:sort_by, options_for_select(Naturesoft::Banners::Banner.sort_by, :selected => params[:sort_by]), class: "select2") %>
+                        <%= select_tag(:sort_by, options_for_select(Naturesoft::Banners::Banner.sort_by, :selected => params[:sort_by]), class: "select2", "sort-cond": "naturesoft_banners_banners.custom_order") %>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
                         <label><%= t(:sort_orders) %></label>
-                        <%= select_tag(:sort_orders, options_for_select(Naturesoft::Banners::Banner.sort_orders, :selected => params[:sort_orders]), class: "select2") %>
+                        <%= select_tag(:sort_orders, options_for_select(Naturesoft::Banners::Banner.sort_orders, :selected => params[:sort_orders]), class: "select2", "sort-cond": "asc") %>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -67,10 +67,14 @@
                 <tbody>
                     <% @banners.each do |item| %>
                         <tr<% if item.status == "active" %> class="success"<% else %> class="warning"<% end %>>
-							<td width="1%">
+							<td width="1%" class="text-nowrap">
                                 <input type="checkbox" class="node styled"
                                     name="ids[]"
                                     value="<%= item.id %>"
+                                />
+								<input type="hidden"
+                                    name="custom_order"
+                                    value="<%= item.custom_order %>"
                                 />
                             </td>
                             <td>

@@ -1,10 +1,12 @@
 module Naturesoft::Banners
   class Banner < ApplicationRecord
+		include Naturesoft::CustomOrder
 		mount_uploader :image_url, Naturesoft::Banners::BannerUploader
 		
     belongs_to :user
     def self.sort_by
       [
+				["Custom order","naturesoft_banners_banners.custom_order"],
         ["Name","naturesoft_banners_banners.name"],
         ["Created At","naturesoft_banners_banners.created_at"]
       ]
