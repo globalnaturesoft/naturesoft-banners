@@ -75,6 +75,11 @@ module Naturesoft
           @banners.destroy_all
           render text: 'Banner(s) was successfully destroyed.'
         end
+        
+        # GET /banners/select2
+        def select2
+          render json: Banner.select2(params)
+        end
     
         private
           # Use callbacks to share common setup or constraints between actions.

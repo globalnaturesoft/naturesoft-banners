@@ -1,0 +1,27 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="control-label" ><%= t(:banner) %> <span class='text-danger'>*</span></label>
+            <div class="">
+              <% banner = Naturesoft::Banners::Banner.where(id: options["banner_id"]).first %>
+                <% selected = options_for_select([[banner.name,banner.id]],banner.id) if !banner.nil? %>
+                <%= select_tag("options[banner_id]",
+                  selected,
+                  {
+                    class: "select2-ajax",
+                    include_blank: "none",
+                    "data-url": naturesoft_banners.select2_admin_banners_path,
+                  }
+                ) %>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+    <div class="form-group">
+        <label class="control-label" ><%= t(:style) %> <span class='text-danger'>*</span></label>
+        <div class="">
+            <input type="text" value="default" name="options[style]" class="form-control" >
+        </div>
+    </div>
+  </div>
+</div>
