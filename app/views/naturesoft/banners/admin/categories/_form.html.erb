@@ -1,0 +1,66 @@
+<% if category.errors.any? %>
+  <div class="alert alert-warning alert-bordered">
+    <button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
+    <div id="error_explanation">
+      <h2><%= pluralize(category.errors.count, "error") %> prohibited this slideshow from being saved:</h2>
+  
+      <ul>
+      <% category.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  </div>
+<% end %>
+
+<div class="panel panel-flat">
+  
+  <div class="panel-body">
+    
+    <%= form_for([naturesoft_banners, :admin, category], html: {class: "form-horizontal", id: "validate_checking"}) do |f| %>
+      
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="col-md-12 control-label" ><%= t(:name) %> <span class='text-danger'>*</span></label>
+            <div class="col-md-12">
+              <%= f.text_field :name, class: "form-control required" %>
+            </div>
+          </div>
+            
+          <div class="form-group">
+            <label class="col-md-12 control-label" ><%= t(:width) %> <span class='text-danger'>*</span></label>
+            <div class="col-md-12">
+              <%= f.text_field :width, class: "form-control number_input required" %>
+            </div>
+          </div>
+        </div>
+          
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="col-md-12 control-label"><%= t(:image_style) %></label>
+            <div class="col-md-12">
+              <select class="select2" name="category[image_scale]">
+                <option <%= "selected" if category.image_scale == "fill" %> value="fill"><%= t(:fill) %></option>
+                <option <%= "selected" if category.image_scale == "fit" %> value="fit"><%= t(:fit) %></option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label class="col-md-12 control-label" ><%= t(:height) %> <span class='text-danger'>*</span></label>
+            <div class="col-md-12">
+              <%= f.text_field :height, class: "form-control number_input required" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <div class="text-right">
+        <%= button_tag "#{t(:save)}<i class=\"icon-check position-right\"></i>".html_safe, class: "btn btn-primary"%>
+        <%= link_to "#{t(:cancel)}<i class=\"icon-cross3 position-right\"></i>".html_safe, naturesoft_banners.admin_categories_path, class: "btn btn-danger"%>
+      </div>
+        
+    <% end %>
+  </div>
+</div>

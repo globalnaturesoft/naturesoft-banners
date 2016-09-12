@@ -4,5 +4,8 @@
         <li<% if["naturesoft/banners/admin/banners"].include?(params[:controller]) %>class="active"<% end %>>
             <%= link_to t(:banners), naturesoft_banners.admin_banners_path %>
         </li>
+        <li<% if["naturesoft/banners/admin/categories"].include?(params[:controller]) %>class="active"<% end %>>
+            <%= link_to t(:categories), naturesoft_banners.admin_categories_path %>
+        </li>
     </ul>
 </li>

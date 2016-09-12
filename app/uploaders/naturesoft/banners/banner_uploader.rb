@@ -53,6 +53,26 @@ module Naturesoft
 			version :system do
 				process :resize_to_fit => [60, 60]
 			end
+			
+			# Thumb size from slideshow
+			version :thumb do
+				process :banner_resize
+			end 
+			
+			# Thumb size from slideshow
+			def banner_resize
+				if model.category.present? 
+					if model.category.image_scale == "fill"
+						resize_to_fill(model.category.width, model.category.height)
+					elsif model.category.image_scale == "fit"
+						resize_to_fit(model.category.width, model.category.height)
+					else
+						resize_to_fill(400, 300)
+					end
+				else
+					resize_to_fill(400, 300)
+				end
+			end
     
     end
   end

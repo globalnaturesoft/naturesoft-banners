@@ -1,9 +1,26 @@
 module Naturesoft::Banners
   class Banner < ApplicationRecord
 		include Naturesoft::CustomOrder
+		
+		validates :image_url, presence: true
+		validates :image_url, allow_blank: true, format: {
+			with: %r{\.(gif|jpg|png)\Z}i,
+			message: 'must be a URL for GIF, JPG or PNG image.'
+		}
+		validates :name, presence: true
+		validates :category_id, presence: true
+		
 		mount_uploader :image_url, Naturesoft::Banners::BannerUploader
 		
     belongs_to :user
+    belongs_to :category
+    
+    after_save :recreate_thumbs
+    
+    def recreate_thumbs
+			self.image_url.recreate_versions!
+		end
+    
     def self.sort_by
       [
 				["Custom order","naturesoft_banners_banners.custom_order"],

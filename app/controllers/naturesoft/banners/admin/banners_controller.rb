@@ -84,7 +84,7 @@ module Naturesoft
     
           # Only allow a trusted parameter "white list" through.
           def banner_params
-            params.fetch(:banner, {}).permit(:image_url, :name, :link_url, :description, :status)
+            params.fetch(:banner, {}).permit(:image_url, :name, :link_url, :description, :status, :category_id)
           end
       end
     end

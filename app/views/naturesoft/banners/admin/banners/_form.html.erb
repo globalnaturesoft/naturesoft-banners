@@ -35,11 +35,31 @@
             <%= f.text_field :name, class: "form-control required" %>
         </div>
     </div>
+    
+    <div class="form-group">
+        <label class="col-md-2 control-label" ><%= t(:scale) %> <span class='text-danger'>*</span></label>
+        <div class="col-md-10">
+            <div class="input-group">
+                <% selected = options_for_select([[banner.category.name, banner.category_id]],banner.category_id) if banner.category.present? %>
+                <%= select_tag("banner[category_id]",
+                    selected,
+                    {
+                        class: "select2-ajax",
+                        include_blank: "none",
+                        "data-url": select2_admin_categories_path,
+                    }
+                ) %>
+                <span class="input-group-btn">
+                    <a class="btn btn-info" href="<%= naturesoft_banners.new_admin_category_path %>"><i class="icon-plus2"></i></a>
+                </span>
+            </div>
+        </div>
+    </div>
         
     <div class="form-group">
-        <label class="col-md-2 control-label" ><%= t(:link_url) %> <span class='text-danger'>*</span></label>
+        <label class="col-md-2 control-label" ><%= t(:link_url) %> </label>
         <div class="col-md-10">
-            <%= f.text_field :link_url, class: "form-control required" %>
+            <%= f.text_field :link_url, class: "form-control" %>
         </div>
     </div>
         

@@ -7,5 +7,13 @@ Naturesoft::Banners::Engine.routes.draw do
         delete 'delete'
       end
     end
+    resources :categories do
+      collection do
+        put 'enable'
+        put 'disable'
+        delete 'delete'
+        get "select2"
+      end
+    end
   end
 end
