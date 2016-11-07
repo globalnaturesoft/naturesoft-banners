@@ -3,7 +3,7 @@
   banner = Naturesoft::Banners::Banner.find(options["banner_id"])
 %>
 
-<%= render "naturesoft/"+nsmodule.engine_name+"/admin/nsmodules/"+nsmodule.module_name+"/templates/default",
+<%= render "naturesoft/"+nsmodule.engine_name+"/backend/nsmodules/"+nsmodule.module_name+"/templates/default",
   banner: banner,
   options: options
 %>

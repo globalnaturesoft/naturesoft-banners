@@ -1,0 +1,11 @@
+<li>
+    <a href="#"><i class="icon-image4"></i> <span><%= t(:banner) %></span></a>
+    <ul>
+        <li<% if["naturesoft/banners/backend/banners"].include?(params[:controller]) %>class="active"<% end %>>
+            <%= link_to t(:banners), naturesoft_banners.backend_banners_path %>
+        </li>
+        <li<% if["naturesoft/banners/backend/categories"].include?(params[:controller]) %>class="active"<% end %>>
+            <%= link_to t(:categories), naturesoft_banners.backend_categories_path %>
+        </li>
+    </ul>
+</li>

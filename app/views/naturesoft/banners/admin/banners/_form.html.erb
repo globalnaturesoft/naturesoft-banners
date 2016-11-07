@@ -13,7 +13,7 @@
   </div>
 <% end %>
 
-<%= form_for([naturesoft_banners, :admin, banner], html: {class: "form-horizontal validate", multipart: true}) do |f| %>
+<%= form_for([naturesoft_banners, :backend, banner], html: {class: "form-horizontal validate", multipart: true}) do |f| %>
     
     <div class="form-group">
       <label class="col-md-2 control-label" ><%= t(:image) %> <span class='text-danger'>*</span></label>
@@ -46,11 +46,11 @@
                     {
                         class: "select2-ajax",
                         include_blank: "none",
-                        "data-url": select2_admin_categories_path,
+                        "data-url": select2_backend_categories_path,
                     }
                 ) %>
                 <span class="input-group-btn">
-                    <a class="btn btn-info" href="<%= naturesoft_banners.new_admin_category_path %>"><i class="icon-plus2"></i></a>
+                    <a class="btn btn-info" href="<%= naturesoft_banners.new_backend_category_path %>"><i class="icon-plus2"></i></a>
                 </span>
             </div>
         </div>

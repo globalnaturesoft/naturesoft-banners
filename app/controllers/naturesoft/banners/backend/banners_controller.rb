@@ -1,14 +1,14 @@
 module Naturesoft
   module Banners
-    module Admin
-      class BannersController < Naturesoft::Admin::AdminController
+    module Backend
+      class BannersController < Naturesoft::Backend::BackendController
         before_action :set_banner, only: [:show, :edit, :update, :enable, :disable, :destroy]
         before_action :default_breadcrumb
         
         # add top breadcrumb
         def default_breadcrumb
-          add_breadcrumb "Banner", naturesoft_banners.admin_banners_path
-          add_breadcrumb "Banners", naturesoft_banners.admin_banners_path
+          add_breadcrumb "Banner", naturesoft_banners.backend_banners_path
+          add_breadcrumb "Banners", naturesoft_banners.backend_banners_path
         end
     
         # GET /banners
@@ -37,7 +37,7 @@ module Naturesoft
           @banner.user = current_user
     
           if @banner.save
-            redirect_to naturesoft_banners.edit_admin_banner_path(@banner.id), notice: 'Banner was successfully created.'
+            redirect_to naturesoft_banners.edit_backend_banner_path(@banner.id), notice: 'Banner was successfully created.'
           else
             render :new
           end
@@ -46,7 +46,7 @@ module Naturesoft
         # PATCH/PUT /banners/1
         def update
           if @banner.update(banner_params)
-            redirect_to naturesoft_banners.edit_admin_banner_path(@banner.id), notice: 'Banner was successfully updated.'
+            redirect_to naturesoft_banners.edit_backend_banner_path(@banner.id), notice: 'Banner was successfully updated.'
           else
             render :edit
           end
